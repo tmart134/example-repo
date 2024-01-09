@@ -9,4 +9,5 @@ jobs:
       - name: Pause for 25 seconds
         run: |
           echo $INPUT_FOO
+          echo "this is only a test"
           sleep 25
