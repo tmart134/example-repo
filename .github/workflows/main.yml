@@ -1,4 +1,4 @@
-name: Master
+name: running-tests
 on:
   workflow_dispatch
 jobs:
@@ -8,6 +8,5 @@ jobs:
       - uses: actions/checkout@master
       - name: Pause for 25 seconds
         run: |
-          echo $INPUT_FOO
           echo "this is only a test"
           sleep 25
