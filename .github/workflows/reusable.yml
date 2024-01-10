@@ -8,7 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Trigger e2e tests
-        uses: tmart134/trigger-workflow-and-wait
+        uses: tmart134/trigger-workflow-and-wait@v1.6.5
         with:
           owner: tmart134
           repo: example-repo
