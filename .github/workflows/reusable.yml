@@ -16,11 +16,11 @@ jobs:
         with:
           owner: tmart134
           repo: example-repo
-          github_token: ${{ steps.get-token.outputs.token }}
+          github_token: $({ secrets.TOKEN })
           workflow_file_name: main.yml
           ref: main
           wait_interval: 5
-          client_payload: '{}'
+          client_payload: '{test:true}'
           propagate_failure: false
           trigger_workflow: true
           wait_workflow: true
