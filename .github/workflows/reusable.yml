@@ -1,0 +1,26 @@
+name: Trigger E2E Tests
+
+on:
+  workflow_call:
+
+permissions:
+  id-token: write
+  contents: read
+
+jobs:
+  test:
+    runs-on: staging
+    steps:
+      - name: Trigger e2e tests
+        uses: tmart134/trigger-workflow-and-wait@v1.6.1
+        with:
+          owner: tmart134
+          repo: example-repo
+          github_token: ${{ steps.get-token.outputs.token }}
+          workflow_file_name: main.yml
+          ref: main
+          wait_interval: 5
+          client_payload: '{}'
+          propagate_failure: false
+          trigger_workflow: true
+          wait_workflow: true
