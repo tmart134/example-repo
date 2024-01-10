@@ -5,7 +5,7 @@ on:
 
 jobs:
   test:
-    runs-on: staging
+    runs-on: ubuntu-latest
     steps:
       - name: Trigger e2e tests
         uses: tmart134/trigger-workflow-and-wait@v1.6.1
