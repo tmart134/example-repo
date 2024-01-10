@@ -16,7 +16,7 @@ jobs:
           workflow_file_name: main.yml
           ref: update-readme
           wait_interval: 5
-          client_payload: '{test:true}'
+          client_payload: '{}'
           propagate_failure: false
           trigger_workflow: true
           wait_workflow: true
