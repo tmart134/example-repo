@@ -14,7 +14,7 @@ jobs:
           repo: example-repo
           github_token: $({ secrets.TOKEN })
           workflow_file_name: main.yml
-          ref: main
+          ref: update-readme
           wait_interval: 5
           client_payload: '{test:true}'
           propagate_failure: false
