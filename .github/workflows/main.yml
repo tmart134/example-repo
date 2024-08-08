@@ -1,13 +1,12 @@
-name: Master
+name: running-tests
 on:
   workflow_dispatch
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@main
       - name: Pause for 25 seconds
         run: |
-          echo $INPUT_FOO
           echo "this is only a test"
           sleep 25
