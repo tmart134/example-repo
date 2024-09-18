@@ -7,6 +7,9 @@ on:
     paths:
       - 'tests/**'
 
+permissions:
+  contents: write
+  
 jobs:
   run-on-merge:
     runs-on: ubuntu-latest
