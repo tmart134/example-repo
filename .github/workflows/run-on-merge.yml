@@ -27,4 +27,4 @@ jobs:
           git config user.name github-actions
           git config user.email github-actions@github.com
           git commit -m "generated new tests by tags doc"
-          git push
+          git push --force
