@@ -28,7 +28,7 @@ jobs:
           fi
 
       - name: Commit changes
-        if env.doc_updated == 'true'
+        if: env.doc_updated == 'true'
         run: |
           git add .
           git config user.name github-actions
