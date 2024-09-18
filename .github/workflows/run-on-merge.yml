@@ -6,12 +6,11 @@ on:
       - main
     paths:
       - 'tests/**'
-
-permissions:
-  contents: write
   
 jobs:
   run-on-merge:
+    permissions:
+      contents: write
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
