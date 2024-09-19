@@ -1,0 +1,10 @@
+{
+    "ref": "refs/heads/main",
+    "before": "some_sha",
+    "after": "a_new_sha",
+    "commits": [
+        {
+            "modified": ["tests/test1.txt"]
+        }
+    ]
+}
