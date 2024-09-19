@@ -20,15 +20,17 @@ jobs:
           > my_file.md
       
       - name: Check for changes
+        id: check_changes
         run: |
-          if git diff --exit-code; then
-            echo "::set-env name=doc_updated::false"
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
           else
-            echo "::set-env name=doc_updated::true"
+            echo "changes=false" >> "$GITHUB_OUTPUT"
           fi
+          echo $env:GITHUB_OUTPUT
 
       - name: Commit changes
-        if: env.doc_updated == 'true'
+        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git add .
           git config user.name github-actions
