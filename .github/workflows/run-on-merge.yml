@@ -27,7 +27,6 @@ jobs:
           else
             echo "changes=false" >> "$GITHUB_OUTPUT"
           fi
-          echo $env:GITHUB_OUTPUT
 
       - name: Commit changes
         if: steps.check_changes.outputs.changes == 'true'
