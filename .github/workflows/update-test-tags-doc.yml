@@ -40,11 +40,11 @@ jobs:
           git commit -m "Automated update to Tests by tags doc"
           git push origin update-docs-${{ github.sha }}
 
-      - name: Create PR
-        uses: peter-evans/create-pull-request@v5
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          branch: update-docs-${{ github.sha }}
-          base: main
-          title: Automated Update to docs
-          body: "This is an update to the Test by tags doc"
+      # - name: Create PR
+      #   uses: peter-evans/create-pull-request@v5
+      #   with:
+      #     token: ${{ secrets.GITHUB_TOKEN }}
+      #     branch: update-docs-${{ github.sha }}
+      #     base: main
+      #     title: Automated Update to docs
+      #     body: "This is an update to the Test by tags doc"
