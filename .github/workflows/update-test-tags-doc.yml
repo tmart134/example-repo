@@ -10,8 +10,10 @@ on:
 jobs:
   run-on-merge:
     runs-on: ubuntu-latest
+
     permissions: 
        contents: write
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
@@ -24,14 +26,10 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "changes=true" >> "$GITHUB_OUTPUT"
-          else
-            echo "changes=false" >> "$GITHUB_OUTPUT"
-          fi
+          git diff --exit-code ./docs/my_file.md
 
       - name: Commit and push
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outputs.exit_code == 0
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
