@@ -21,7 +21,7 @@ jobs:
       - name: Run script to update Tests by Tags doc
         run: |
           echo "The /tests directory has been changed. Let's update the Tests by Tags doc $(date)"
-          > ./docs/my_file.md
+          > docs/my_file.md
       
       - name: Check for changes
         id: check_changes
