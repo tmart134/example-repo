@@ -26,10 +26,14 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          git diff --exit-code ./docs/my_file.md
+          if [[ -n $(git status --porcelain) ]]; then
+            echo "changes=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "changes=false" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: Commit and push
-        if: steps.check_changes.outputs.exit_code == 0
+        if: steps.check_changes.outputs.changes == 'true'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
