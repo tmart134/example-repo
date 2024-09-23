@@ -30,9 +30,10 @@ jobs:
         run: |
           if [[ -n "$(git status --porcelain docs/)" ]]; then
             echo "changes=true" >> $GITHUB_OUTPUT
+            echo "the file has changed"
           else
             echo "changes=false" >> $GITHUB_OUTPUT
-            echo "there are no file changes"
+            echo "the file has not changed"
           fi
 
       - name: Commit and push
@@ -47,7 +48,7 @@ jobs:
           git push origin update-docs-${{ github.sha }}
     
       - name: Create a PR
-        if: steps.commit_and_push.result == 'success'
+        if: steps.commit_and_push.outcome == 'success'
         run: |
           gh pr create -B main -H update-docs-${{ github.sha }} --title "Automated Update to docs" --body "This is an update to the Test by tags doc"
         env:
