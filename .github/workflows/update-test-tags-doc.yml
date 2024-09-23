@@ -26,14 +26,15 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
-          if [[ -n $(git status --porcelain) ]]; then
-            echo "changes=true" >> "$GITHUB_OUTPUT"
+          if [[ -n "$(git status --porcelain docs/)" ]]; then
+            echo "changes=true"
           else
-            echo "changes=false" >> "$GITHUB_OUTPUT"
+            echo "changes=false"
+            exit 1
           fi
 
       - name: Commit and push
-        if: steps.check_changes.outputs.changes == 'true'
+        if: steps.check_changes.outcome != 'failure'
         run: |
           git config user.name github-actions
           git config user.email github-actions@github.com
