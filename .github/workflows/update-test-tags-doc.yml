@@ -20,8 +20,7 @@ jobs:
 
       - name: Run script to update Tests by Tags doc
         run: |
-          echo "The /tests directory has been changed. Let's update the Tests by Tags doc $(date)"
-          >> docs/my_file.md
+          echo "The /tests directory has been changed. Let's update the Tests by Tags doc $(date)">> docs/my_file.md
           cat docs/my_file.md
           echo "$(git status)"
       
