@@ -22,7 +22,7 @@ jobs:
         run: |
           echo "The /tests directory has been changed. Let's update the Tests by Tags doc $(date)"
           >> ./docs/my_file.md
-          echo "$(git status)""
+          echo "$(git status)"
       
       - name: Check for changes
         id: check_changes
