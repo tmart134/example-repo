@@ -46,7 +46,10 @@ jobs:
           git push origin update-docs-${{ github.sha }}
     
       - name: Create a PR
-        run: gh pr create -B main -H update-docs-${{ github.sha }} --title "Automated Update to docs" --body "This is an update to the Test by tags doc"
+        run: |
+          gh pr create -B main -H update-docs-${{ github.sha }} --title "Automated Update to docs" --body "This is an update to the Test by tags doc"
+          gh pr review --approve
+          gh pr merge --merge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # - name: Create PR
