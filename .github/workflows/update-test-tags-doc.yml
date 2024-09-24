@@ -60,7 +60,7 @@ jobs:
         if: steps.create_pr.outcome == 'success'
         run: gh pr review --approve
         env:
-          TOKEN: ${{ secrets.EXAMPLE_TOKEN }}
+          EXAMPLE_TOKEN: ${{ secrets.EXAMPLE_TOKEN }}
 
       - name: Merge PR
         if: steps.review_approve_pr.outcome == 'success'
