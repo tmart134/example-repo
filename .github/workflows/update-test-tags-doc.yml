@@ -48,8 +48,22 @@ jobs:
           git push origin update-docs-${{ github.sha }}
     
       - name: Create a PR
+        id: create_pr
         if: steps.commit_and_push.outcome == 'success'
         run: |
           gh pr create -B main -H update-docs-${{ github.sha }} --title "Automated Update to docs" --body "This is an update to the Test by tags doc"
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Review and approve PR
+        id: review_approve_pr
+        if: steps.create_pr.outcome == 'success'
+        run: gh pr review --approve
+        env:
+          TOKEN: ${{ secrets.EXAMPLE_TOKEN }}
+
+      - name: Merge PR
+        if: steps.review_approve_pr.outcome == 'success'
+        run: gh pr merge --merge
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
